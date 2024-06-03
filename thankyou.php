@@ -15,7 +15,7 @@
 	        width:700px;
 	        font-family: 'Carrois Gothic';
 	        border-radius: 10px
-            
+
         }
         h1, h2 {
             color: #333;
@@ -27,7 +27,7 @@
 
 }
         table {
-           
+
             font-size:14px;
 	        width:580px;
 	         margin:0px auto 1em auto;
@@ -44,7 +44,7 @@
 }
 .table2{
     border: 3px solid #000;
- 
+
 }
         table, th {
             border: 1px solid #000;
@@ -56,7 +56,7 @@
         th {
             background-color: white;
         }
-         
+
         .error {
             color: red;
         }
@@ -158,62 +158,66 @@
     $total = 0;
     ?>
 
-    <h1>Thanks for your order <?php echo htmlspecialchars($_POST['fullname']); ?>.</h1>
-    <h3>Here's a summary of your order:</h3>
+    <header>
+      <h1>Thanks for your order <?php echo htmlspecialchars($_POST['fullname']); ?>.</h1>
+      <h3>Here's a summary of your order:</h3>
+    </header>
 
-    <table class="table1">
+    <main>
+      <table class="table1">
         <tr>
-            <th colspan="2">Address Information</th>
+          <th colspan="2">Address Information</th>
         </tr>
         <tr>
-            <td>Address:</td>
-            <td><?php echo htmlspecialchars($_POST['address']); ?></td>
+          <td>Address:</td>
+          <td><?php echo htmlspecialchars($_POST['address']); ?></td>
         </tr>
         <tr>
-            <td>City:</td>
-            <td><?php echo htmlspecialchars($_POST['city']); ?></td>
+          <td>City:</td>
+          <td><?php echo htmlspecialchars($_POST['city']); ?></td>
         </tr>
         <tr>
-            <td>Province:</td>
-            <td><?php echo htmlspecialchars($_POST['province']); ?></td>
+          <td>Province:</td>
+          <td><?php echo htmlspecialchars($_POST['province']); ?></td>
         </tr>
         <tr>
-            <td>Postal Code:</td>
-            <td><?php echo htmlspecialchars($_POST['postal']); ?></td>
+          <td>Postal Code:</td>
+          <td><?php echo htmlspecialchars($_POST['postal']); ?></td>
         </tr>
         <tr>
-            <td>Email:</td>
-            <td><?php echo htmlspecialchars($_POST['email']); ?></td>
+          <td>Email:</td>
+          <td><?php echo htmlspecialchars($_POST['email']); ?></td>
         </tr>
-    </table>
+      </table>
 
-    <table class="table2">
-    <tr>
-            <th colspan="3">order Information</th>
+      <table class="table2">
+        <tr>
+          <th colspan="3">order Information</th>
         </tr>
         <tr>
-            <th>Quantity</th>
-            <th>Description</th>
-            <th>Cost</th>
+          <th>Quantity</th>
+          <th>Description</th>
+          <th>Cost</th>
         </tr>
-        <?php
-        foreach ($items as $item) {
-            if (!empty($item['qty']) && $item['qty'] > 0) {
-                $item_total = $item['price'] * $item['qty'];
-                $total += $item_total;
-                echo "<tr>";
-                echo "<td>{$item['qty']}</td>";
-                echo "<td>{$item['name']}</td>";
-                echo "<td>\$" . number_format($item['price'], 2) . "</td>";
-                echo "</tr>";
-            }
-        }
-        ?>
+          <?php
+          foreach ($items as $item) {
+              if (!empty($item['qty']) && $item['qty'] > 0) {
+                  $item_total = $item['price'] * $item['qty'];
+                  $total += $item_total;
+                  echo "<tr>";
+                  echo "<td>{$item['qty']}</td>";
+                  echo "<td>{$item['name']}</td>";
+                  echo "<td>\$" . number_format($item['price'], 2) . "</td>";
+                  echo "</tr>";
+              }
+          }
+          ?>
         <tr>
-            <td colspan="2"><strong>Totals</strong></td>
-            <td><strong>$<?php echo number_format($total, 2); ?></strong></td>
+          <td colspan="2"><strong>Totals</strong></td>
+          <td><strong>$<?php echo number_format($total, 2); ?></strong></td>
         </tr>
-    </table>
+      </table>
+    </main>
 
     <!-- Easter Egg hidden element -->
     <div id="easteregg">🎉 You found the Easter egg! 🎉</div>
@@ -232,6 +236,6 @@
         });
     ?>
     </script>
-    
+
 </body>
 </html>
